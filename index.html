@@ -180,17 +180,24 @@
     }
 
     function closeModal() {
-        document.getElementById('myModal').style.display = "none";
+    document.getElementById('myModal').style.display = "none";
     }
 
     document.getElementById('nameForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        var name = document.getElementById('name').value;
-        closeModal();
-        var greetingElement = document.getElementById('greeting');
-        greetingElement.innerText = "Привіт, " + name + "!";
-        greetingElement.style.display = "block";
-    });
+    event.preventDefault();
+    var name = document.getElementById('name').value.trim();  // Видаляємо зайві пробіли
+
+    // Перевірка на порожнє ім'я
+    if (name === "") {
+        alert("Будь ласка, введіть ваше ім'я.");  // Виводимо попередження, якщо ім'я порожнє
+        return; 
+    }
+
+    closeModal();
+    var greetingElement = document.getElementById('greeting');
+    greetingElement.innerText = "Привіт, " + name + "!";
+    greetingElement.style.display = "block";
+});
 </script>
 
 </body>
